@@ -27,20 +27,22 @@ function App() {
         disabled={disabled}
         // o disabled ele recebe false no primeiro momento
         // o texto recebe o newButtonColor que esta red inicalmente
-        style={{ backgroundColor: buttonColor, color: "white" }}
+        style={{
+          backgroundColor: disabled ? "gray" : buttonColor,
+          color: "white",
+        }}
       >
         Change to {newButtonColor}
       </button>
       <br />
       <input
+        type="checkbox"
         id="disable-button-checkbox"
         defaultChecked={disabled}
         // ao clicar no input ele atribui o
         onChange={(e) => {
-          console.log("aqui", e.target.checked);
           setDisabled(e.target.checked);
         }}
-        type="checkbox"
       ></input>
       <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
