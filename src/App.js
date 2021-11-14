@@ -4,15 +4,45 @@ import "./App.css";
 
 function App() {
   const [buttonColor, setButtonColor] = useState("red");
+  //const iniciando a variavel buttonColor com valor 'red'
   const newButtonColor = buttonColor === "red" ? "blue" : "red";
+
+  // const recebendo o valor de buttonColor no caso começou com red
+  // vareficando se o valor é igual a 'red' se não for recebe 'blue'
+  // senao mantem 'red'
+  const [disabled, setDisabled] = useState(false);
+
+  // const iniciando a variavel disabled com valor false
   return (
+    //retorno da funcao
+
     <div>
       <button
+        // atribui um estilo ao botao backgroundColor recebe o buttonColor
+        //que no caso e red
         onClick={() => setButtonColor(newButtonColor)}
-        style={{ backgroundColor: buttonColor }}
+        // ao clicar o buttonColor recebe o valor de newButtonColor que recebe o
+        //valor de buttonColor que esta red e ele verifica se é red
+        // ele muda para blue senao ele permanece red
+        disabled={disabled}
+        // o disabled ele recebe false no primeiro momento
+        // o texto recebe o newButtonColor que esta red inicalmente
+        style={{ backgroundColor: buttonColor, color: "white" }}
       >
         Change to {newButtonColor}
       </button>
+      <br />
+      <input
+        id="disable-button-checkbox"
+        defaultChecked={disabled}
+        // ao clicar no input ele atribui o
+        onChange={(e) => {
+          console.log("aqui", e.target.checked);
+          setDisabled(e.target.checked);
+        }}
+        type="checkbox"
+      ></input>
+      <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
   );
 }
